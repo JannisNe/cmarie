@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "cmarie"
+version = "0.1.0"
+description = "etst loops"
+authors = ["JannisNe <necker@physik.hu-berlin.de>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Cython = "^3.0.10"
+scipy = "^1.13.1"
+setuptools = "^70.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
