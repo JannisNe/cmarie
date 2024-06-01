@@ -31,7 +31,7 @@ double integrate(double (*func)(double), double a, double b, double rel_precisio
         current_integral *= h; // Multiply by the step size to get the final integral value
 
         // Check if the change in the integral value is within the desired precision
-        if (fabs(current_integral - previous_integral) / previous_integral < rel_precision) {
+        if ((fabs(current_integral - previous_integral) / previous_integral) < rel_precision) {
             break;
         }
 

@@ -1,7 +1,7 @@
 from libc.math cimport fabs
 
 cdef double function_to_integrate(double x):
-    return x * x
+    return x * x * x
 
 cdef double trapezoidal_rule(double a, double b, int n):
     cdef double h = (b - a) / n
