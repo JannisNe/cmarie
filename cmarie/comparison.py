@@ -4,6 +4,7 @@ import numpy as np
 
 from cmarie.delta import compute_integral as python_integrate
 from cdelta import compute_integral as c_integrate
+from integrate import compute_integral as cython_integrate
 
 
 def test_func(which: str):
@@ -12,6 +13,8 @@ def test_func(which: str):
             fct = python_integrate
         case "c":
             fct = c_integrate
+        case "cython":
+            fct = cython_integrate
         case _:
             raise ValueError(f"'{which}' not known!")
 
@@ -33,5 +36,5 @@ def test_func(which: str):
 
 
 if __name__ == '__main__':
-    for which in ["python", "c"]:
+    for which in ["python", "c", "cython"]:
         test_func(which)

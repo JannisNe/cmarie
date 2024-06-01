@@ -6,4 +6,4 @@ def integrand(x: float) -> float:
 
 
 def compute_integral() -> float:
-    return quad(integrand, 0, 1)[0]
+    return quad(integrand, 0, 1, epsrel=1e-6)[0]
