@@ -2,8 +2,8 @@ import timeit
 import numpy as np
 
 from cmarie.delta import compute_integral as python_integrate
-from cmarie.integrate import compute_integral as c_integrate
-from cmarie.cdelta import compute_integral as cython_integrate
+from cmarie.cdelta import compute_integral as c_integrate
+from cmarie.integrate import compute_integral as cython_integrate
 
 
 def test_func(which: str):
@@ -20,11 +20,15 @@ def test_func(which: str):
     print(f"testing {which}")
 
     print("running ...")
-    timer = timeit.Timer(fct)
+
+    def _f():
+        return fct(1e-6)
+
+    timer = timeit.Timer(_f)
     auto_n, _ = timer.autorange()
     print(f" {auto_n} x 5 times ....")
     times = np.array(timer.repeat(number=auto_n, repeat=10)) / auto_n
-    val = fct()
+    val = _f()
     print(
         f"------------ {which} ------------ \n"
         f"  Result: {val}\n"
@@ -35,5 +39,5 @@ def test_func(which: str):
 
 
 if __name__ == '__main__':
-    for which in ["python",  "cython", "c"]:
+    for which in ["cython",  "python", "c"]:
         test_func(which)

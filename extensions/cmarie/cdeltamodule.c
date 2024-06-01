@@ -44,7 +44,13 @@ double integrate(double (*func)(double), double a, double b, double rel_precisio
 
 
 
-PyObject * compute_integral() {
-    double result = integrate(compute_polynomial, 0.0, 1.0, 1e-6);
+PyObject * compute_integral(PyObject* self, PyObject* args) {
+
+    double precision;
+
+    if(!PyArg_ParseTuple(args, "d", &precision))
+		return NULL;
+
+    double result = integrate(compute_polynomial, 0.0, 1.0, precision);
     return Py_BuildValue("d", result);
 }

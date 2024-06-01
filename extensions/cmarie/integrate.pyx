@@ -33,9 +33,7 @@ cpdef double integrate(double a, double b, double precision):
 
     return current_integral
 
-cpdef compute_integral():
+cpdef double compute_integral(double precision):
     cdef double a = 0.0
     cdef double b = 1.0
-    cdef double precision = 1e-6
-
     return integrate(a, b, precision)
