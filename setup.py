@@ -1,14 +1,14 @@
-from setuptools import Extension, setup
+from setuptools import Extension, setup, find_packages
 from Cython.Build import cythonize
 
 
 ext_modules = [
     Extension(
-        "cdelta",
-        include_dirs=["src"],
-        sources=["src/cdeltamodule.c", "src/bind.c"]
+        "cmarie.cdelta",
+        include_dirs=["extensions/cmarie"],
+        sources=["extensions/cmarie/cdeltamodule.c", "extensions/cmarie/bind.c"]
     ),
-    Extension("integrate", sources=["src/integrate.pyx"]),
+    Extension("cmarie.integrate", sources=["extensions/cmarie/integrate.pyx"]),
 ]
 
 
@@ -19,6 +19,8 @@ if __name__ == '__main__':
         description="Python interface for the fputs C library function",
         author="<your name>",
         author_email="your_email@gmail.com",
+        packages=find_packages(where="src"),
+        package_dir={"": "src"},
         ext_modules=cythonize(ext_modules),
         install_requires=[
             "Cython==3.0.10",

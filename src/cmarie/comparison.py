@@ -1,10 +1,9 @@
 import timeit
-from functools import cache
 import numpy as np
 
 from cmarie.delta import compute_integral as python_integrate
-from cdelta import compute_integral as c_integrate
-from integrate import compute_integral as cython_integrate
+from cmarie.integrate import compute_integral as c_integrate
+from cmarie.cdelta import compute_integral as cython_integrate
 
 
 def test_func(which: str):
@@ -36,5 +35,5 @@ def test_func(which: str):
 
 
 if __name__ == '__main__':
-    for which in ["python", "c", "cython"]:
+    for which in ["python",  "cython", "c"]:
         test_func(which)
