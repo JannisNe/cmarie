@@ -1,3 +1,3 @@
 #include <Python.h>
 
-PyObject * delta(PyObject *, PyObject *);
+PyObject * compute_integral(PyObject *, PyObject *);

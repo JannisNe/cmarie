@@ -5,5 +5,5 @@ def integrand(x: float) -> float:
     return x ** 3
 
 
-def compute_delta() -> float:
+def compute_integral() -> float:
     return quad(integrand, 0, 1)[0]

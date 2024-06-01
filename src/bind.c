@@ -1,8 +1,8 @@
 #include "cdeltamodule.h"
 
 static PyMethodDef cdelta_funcs[] = {
-	{	"delta",
-		(PyCFunction)delta,
+	{	"compute_integral",
+		(PyCFunction)compute_integral,
 		METH_VARARGS,
 		NULL},
 		{NULL, NULL, 0, NULL}

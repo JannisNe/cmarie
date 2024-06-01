@@ -2,13 +2,16 @@ import timeit
 from functools import cache
 import numpy as np
 
-from cmarie.delta import compute_delta as delta_python
+from cmarie.delta import compute_integral as python_integrate
+from cdelta import compute_integral as c_integrate
 
 
 def test_func(which: str):
     match which:
         case "python":
-            fct = delta_python
+            fct = python_integrate
+        case "c":
+            fct = c_integrate
         case _:
             raise ValueError(f"'{which}' not known!")
 
@@ -22,7 +25,7 @@ def test_func(which: str):
     val = fct()
     print(
         f"------------ {which} ------------ \n"
-        f"  Result: {val}"
+        f"  Result: {val}\n"
         f"  Min:  {min(times):.2e}s\n"
         f"  Max:  {max(times):.2e}s\n"
         f"  Mean: {np.mean(times):.2e}s +/- {np.std(times):.2e}s\n\n"
