@@ -22,7 +22,7 @@ def test_func(which: str):
     print("running ...")
 
     def _f():
-        return fct(1e-6)
+        return fct(1e-8)
 
     timer = timeit.Timer(_f)
     auto_n, _ = timer.autorange()
