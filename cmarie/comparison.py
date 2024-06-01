@@ -33,5 +33,5 @@ def test_func(which: str):
 
 
 if __name__ == '__main__':
-    for which in ["python", "c", "cython"]:
+    for which in ["python", "c"]:
         test_func(which)

@@ -1,6 +1,5 @@
 from setuptools import Extension, setup
-from setuptools.errors import CCompilerError, ExecError, PlatformError
-from setuptools.command.build_ext import build_ext
+from Cython.Build import cythonize
 
 
 ext_modules = [
@@ -9,6 +8,7 @@ ext_modules = [
         include_dirs=["src"],
         sources=["src/cdeltamodule.c", "src/bind.c"]
     ),
+    # cythonize("src/integrate.pyx")
 ]
 
 
