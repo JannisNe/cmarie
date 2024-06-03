@@ -25,6 +25,7 @@ if __name__ == '__main__':
         install_requires=[
             "Cython==3.0.10",
             "scipy==1.13.1",
-            "setuptools==70.0.0"
+            "setuptools==70.0.0",
+            "numba==0.59.1"
         ]
     )

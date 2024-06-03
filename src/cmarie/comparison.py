@@ -4,6 +4,7 @@ import numpy as np
 from cmarie.delta import compute_integral as python_integrate
 from cmarie.cdelta import compute_integral as c_integrate
 from cmarie.integrate import compute_integral as cython_integrate
+from cmarie.numba_compiled import compute_integral as numba_integrate
 
 
 def test_func(which: str):
@@ -14,6 +15,8 @@ def test_func(which: str):
             fct = c_integrate
         case "cython":
             fct = cython_integrate
+        case "numba":
+            fct = numba_integrate
         case _:
             raise ValueError(f"'{which}' not known!")
 
@@ -22,7 +25,7 @@ def test_func(which: str):
     print("running ...")
 
     def _f():
-        return fct(1e-8)
+        return fct(1e-4)
 
     timer = timeit.Timer(_f)
     auto_n, _ = timer.autorange()
@@ -39,5 +42,5 @@ def test_func(which: str):
 
 
 if __name__ == '__main__':
-    for which in ["cython",  "python", "c"]:
+    for which in ["numba", "cython",  "python", "c"]:
         test_func(which)
